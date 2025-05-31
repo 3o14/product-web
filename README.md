@@ -12,7 +12,6 @@
     
 2. 기능 요구사항
     
-    
     | 페이지 | 요구 기능 | 상세 |
     | --- | --- | --- |
     | 상품 리스트 페이지 <br/>`/products` | 페이지 진입시 상품 리스트 표시 | 20개의 아이템만 노출된다. |
@@ -46,7 +45,7 @@
 - React Query (@tanstack/react-query)
 - Tailwind CSS
 - Zod
-- `sonner`, `react-hot-toast`, `radix-ui` (미정)
+- sonner
 
 ### 2. 디렉토리 구조
 
