@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getPersistedViewType, ViewType } from '../product/utils/viewType';
+import { getPersistedViewType, ViewType } from '../lib/view-type';
 
 export function useViewType() {
   const [viewType, setViewType] = useState<ViewType>('list');

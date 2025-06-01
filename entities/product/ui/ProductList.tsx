@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { cn } from '@/shared/lib/cn';
-import { useViewType } from '@/entities/custom-hook/useViewType';
 import { IProduct } from '../model/types';
 import { ProductItem } from './ProductItem';
+import { useViewType } from '../../../shared/hooks/useViewType';
 
 interface ProductListProps {
   products: IProduct[];
