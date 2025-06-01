@@ -11,5 +11,6 @@ html, body {
 
 @theme {
   --color-primary: #1352F2;
+  --color-primary-hover: #165DFB;
   --color-secondary: #FF5C5C,
 }

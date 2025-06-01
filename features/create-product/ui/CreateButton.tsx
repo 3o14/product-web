@@ -8,7 +8,7 @@ export function CreateButton() {
   return (
     <button
       onClick={() => router.push('/products/new')}
-      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+      className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-hover transition-colors"
     >
       상품 등록
     </button>
