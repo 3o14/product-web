@@ -46,6 +46,7 @@
 - Tailwind CSS
 - Zod
 - sonner
+- react-icons
 
 ### 2. 디렉토리 구조
 
