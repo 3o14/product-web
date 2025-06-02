@@ -1,6 +1,6 @@
 'use client';
 
-import ProductForm from '../../../features/create-product/ui/ProductForm';
+import ProductForm from '@/features/create-product/ui/ProductForm';
 
 export default function CreateProductPage() {
   return (

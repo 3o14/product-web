@@ -4,7 +4,7 @@ import { Nanum_Gothic } from 'next/font/google';
 import '../styles/globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import ReactQueryProvider from '../shared/providers/QueryClientProvider';
+import ReactQueryProvider from '@/shared/providers/QueryClientProvider';
 
 const nanumGothic = Nanum_Gothic({
   subsets: ['latin'],

@@ -1,4 +1,4 @@
-import { IProduct } from './types';
+import { IProduct } from '@/entities/product/model/types';
 
 const API_BASE_URL = 'https://fakestoreapi.com';
 

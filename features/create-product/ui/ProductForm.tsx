@@ -2,12 +2,12 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { productSchema, ProductFormType } from '../model/schema';
-import { useCreateProduct } from '../model/useCreateProduct';
+import { productSchema, ProductFormType } from '@/features/create-product/model/schema';
+import { useCreateProduct } from '@/features/create-product/model/useCreateProduct';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/shared/lib/cn';
 import { toast } from 'sonner';
-import { Input } from '../../../shared/ui/Input';
+import { Input } from '@/shared/ui/Input';
 
 export default function ProductForm() {
   const router = useRouter();
@@ -49,7 +49,7 @@ export default function ProductForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-md space-y-4">
       <Input label="제목" {...register('title')} error={errors.title?.message} />
-      
+
       <textarea
         placeholder="설명"
         {...register('description')}
@@ -92,16 +92,14 @@ export default function ProductForm() {
       </div>
 
       <p className="text-sm text-gray-600">할인가: {finalPrice.toLocaleString()}원</p>
-      
+
       <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md">
         <button
           type="submit"
           disabled={isLoading}
           className={cn(
-            "w-full rounded py-2 font-bold transition-colors",
-            isLoading
-              ? "cursor-not-allowed bg-gray-400 text-gray-600"
-              : "bg-blue-600 text-white hover:bg-blue-700",
+            'w-full rounded py-2 font-bold transition-colors',
+            isLoading ? 'cursor-not-allowed bg-gray-400 text-gray-600' : 'bg-blue-600 text-white hover:bg-blue-700',
           )}
         >
           {isLoading ? (

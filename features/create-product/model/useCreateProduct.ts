@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import { ProductFormType } from './schema';
+import { ProductFormType } from '@/features/create-product/model/schema';
 
 interface UseCreateProductOptions {
   onSuccess?: () => void;

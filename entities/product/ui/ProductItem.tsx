@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { IProduct } from '../model/types';
+import { IProduct } from '@/entities/product/model/types';
 // todo 경로 수정
 // import { IProduct } from '@/types/product';
 
