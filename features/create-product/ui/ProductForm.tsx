@@ -48,7 +48,7 @@ export default function ProductForm() {
   const isLoading = isPending || isSubmitting;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4">
       <Input label="제목" {...register('title')} error={errors.title?.message} />
 
       <textarea
@@ -96,12 +96,12 @@ export default function ProductForm() {
 
       <p className="text-sm text-gray-600">할인가: {finalPrice.toLocaleString()}원</p>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md">
+      <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md text-center">
         <button
           type="submit"
           disabled={isLoading}
           className={cn(
-            'w-full rounded py-2 font-bold transition-colors',
+            'w-full max-w-md rounded py-2 font-bold transition-colors',
             isLoading ? 'cursor-not-allowed bg-gray-400 text-gray-600' : 'bg-blue-600 text-white hover:bg-blue-700',
           )}
         >
