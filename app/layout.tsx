@@ -5,6 +5,7 @@ import '../styles/globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import ReactQueryProvider from '@/shared/providers/QueryClientProvider';
+import { IMAGES } from '@/shared/constants';
 
 const nanumGothic = Nanum_Gothic({
   subsets: ['latin'],
@@ -28,7 +29,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <header className="w-full px-6 py-4 h-16">
             <Link href="/products">
-              <Image src="https://cdn.weebur.com/assets/bi/logo.svg" alt="Wiber Logo" width={100} height={100} />
+              <Image src={IMAGES.LOGO_URL} alt="Wiber Logo" width={100} height={100} />
             </Link>
           </header>
           <main className="h-[calc(100vh-64px)]">{children}</main>

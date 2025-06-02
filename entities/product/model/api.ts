@@ -1,12 +1,11 @@
 import { IProduct } from '@/entities/product/model/types';
-
-const API_BASE_URL = 'https://fakestoreapi.com';
+import { API_URLS } from '@/shared/constants';
 
 const getProductsUrl = (params?: { limit?: number }) => {
   if (params?.limit) {
-    return `${API_BASE_URL}/products?limit=${params.limit}`;
+    return `${API_URLS.PRODUCTS}?limit=${params.limit}`;
   }
-  return `${API_BASE_URL}/products`;
+  return API_URLS.PRODUCTS;
 };
 
 export async function fetchProducts(limit?: number): Promise<IProduct[]> {

@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { cn } from '@/shared/lib/cn';
 import { toast } from 'sonner';
 import { Input } from '@/shared/ui/Input';
+import { BRAND_OPTIONS, FORM_VALIDATION } from '@/shared/constants';
 
 export default function ProductForm() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function ProductForm() {
     formState: { errors, isSubmitting },
   } = useForm<ProductFormType>({
     resolver: zodResolver(productSchema),
-    mode: 'onBlur',
+    mode: FORM_VALIDATION.MODE,
   });
 
   const { mutate, isPending } = useCreateProduct({
@@ -84,9 +85,11 @@ export default function ProductForm() {
           )}
         >
           <option value="">선택하세요</option>
-          <option value="Apple">Apple</option>
-          <option value="Samsung">Samsung</option>
-          <option value="Weebur">Weebur</option>
+          {BRAND_OPTIONS.map((brand) => (
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
+          ))}
         </select>
         {errors.brand && <p className="text-sm text-red-500">{errors.brand.message}</p>}
       </div>
