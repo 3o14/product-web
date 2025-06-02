@@ -6,8 +6,8 @@ async function ProductPage() {
   const products = await fetchProducts();
 
   return (
-    <div className="w-full flex flex-col justify-center items-center lg:gap-6">
-      <CreateButton />
+    <div className="w-full flex flex-col justify-center items-center gap-4 lg:gap-6">
+      <CreateButton /> 
       <ProductList products={products} />
     </div>
   );

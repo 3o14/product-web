@@ -14,10 +14,16 @@ export function ProductItem({ product }: ProductItemProps) {
   const { viewType } = useViewType();
 
   return (
-    <div className={cn('w-full rounded-2xl p-4 bg-white', viewType === VIEW_TYPES.LIST && 'sm:flex sm:gap-4')}>
+    <div
+      className={cn(
+        'w-full rounded-2xl p-4 bg-white',
+        viewType === VIEW_TYPES.LIST && 'sm:flex sm:gap-4 xl:gap-10',
+        viewType === VIEW_TYPES.GRID && 'p-0 sm:p-4',
+      )}
+    >
       <div
         className={cn(
-          'relative w-full h-64 mb-4 rounded-lg overflow-hidden',
+          'relative w-full h-48 sm:h-64 mb-4 rounded-lg overflow-hidden',
           viewType === VIEW_TYPES.LIST && 'sm:w-1/3 md:max-w-64',
         )}
       >
@@ -43,7 +49,12 @@ export function ProductItem({ product }: ProductItemProps) {
         <h2 className="text-lg font-semibold line-clamp-2 mb-1">{product.title}</h2>
         <p className="text-sm text-gray-500 line-clamp-2 mb-2">{product.description}</p>
 
-        <div className="flex items-center justify-between text-sm mb-2">
+        <div
+          className={cn(
+            'flex items-center justify-between text-sm mb-2',
+            viewType === VIEW_TYPES.GRID && 'flex-col',
+          )}
+        >
           <span className="text-gray-600">{product.category}</span>
           <span className="text-yellow-500 font-medium">
             ⭐ {product.rating.rate.toFixed(1)} ({product.rating.count})
