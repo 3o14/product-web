@@ -5,23 +5,21 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, className, ...props }, ref) => {
-    return (
-      <div className="flex flex-col gap-1">
-        {label && (
-          <label
-            htmlFor={props.id || label.replace(/\s+/g, '-').toLowerCase()}
-            className="text-sm font-medium text-gray-700"
-          >
-            {label}
-          </label>
-        )}
-        <input
-          ref={ref}
-          id={props.id || label.replace(/\s+/g, '-').toLowerCase()}
-          {...props}
-          className={`
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ label, error, className, ...props }, ref) => {
+  const generateId = () => label?.replace(/\s+/g, '-').toLowerCase() || 'input';
+
+  return (
+    <div className="flex flex-col gap-1">
+      {label && (
+        <label htmlFor={props.id || generateId()} className="text-sm font-medium text-gray-700">
+          {label}
+        </label>
+      )}
+      <input
+        ref={ref}
+        id={props.id || generateId()}
+        {...props}
+        className={`
             w-full px-3 py-2 
             text-sm 
             border rounded-md 
@@ -29,16 +27,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
             ${className || ''}
           `.trim()}
-        />
-        {error && (
-          <p className="text-sm text-red-500">
-            {error}
-          </p>
-        )}
-      </div>
-    );
-  }
-);
+      />
+      {error && <p className="text-sm text-red-500">{error}</p>}
+    </div>
+  );
+});
 
 Input.displayName = 'Input';
-
