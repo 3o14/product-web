@@ -1,7 +1,16 @@
 import { IProduct } from './types';
 
-export async function fetchProducts(): Promise<IProduct[]> {
-  const res = await fetch('https://fakestoreapi.com/products', {
+const API_BASE_URL = 'https://fakestoreapi.com';
+
+const getProductsUrl = (params?: { limit?: number }) => {
+  if (params?.limit) {
+    return `${API_BASE_URL}/products?limit=${params.limit}`;
+  }
+  return `${API_BASE_URL}/products`;
+};
+
+export async function fetchProducts(limit?: number): Promise<IProduct[]> {
+  const res = await fetch(getProductsUrl({ limit }), {
     cache: 'no-store',
   });
 
