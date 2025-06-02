@@ -17,6 +17,7 @@ export default function ProductList({ products }: ProductListProps) {
   return (
     <ul
       className={cn(
+        'w-full px-6',
         GRID_STYLES.GAP,
         viewType === VIEW_TYPES.GRID && GRID_STYLES.GRID_LAYOUT,
         viewType === VIEW_TYPES.LIST && GRID_STYLES.LIST_LAYOUT,
