@@ -8,7 +8,7 @@ const getProductsUrl = (params?: { limit?: number }) => {
   return API_URLS.PRODUCTS;
 };
 
-export async function fetchProducts(limit?: number): Promise<IProduct[]> {
+export async function fetchProducts(limit: number = 20): Promise<IProduct[]> {
   const res = await fetch(getProductsUrl({ limit }), {
     cache: 'no-store',
   });
