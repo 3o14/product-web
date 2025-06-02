@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import { IProduct } from '@/entities/product/model/types';
+import { useViewType } from '@/shared/hooks/useViewType';
+import { cn } from '@/shared/lib/cn';
+import { VIEW_TYPES } from '@/shared/constants';
 // todo 경로 수정
 // import { IProduct } from '@/types/product';
 
@@ -8,9 +11,22 @@ interface ProductItemProps {
 }
 
 export function ProductItem({ product }: ProductItemProps) {
+  const { viewType } = useViewType();
+
   return (
-    <div className="w-full max-w-sm rounded-2xl p-4 bg-white">
-      <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
+    <div
+      className={cn(
+        'w-full rounded-2xl p-4 bg-white',
+        viewType === VIEW_TYPES.LIST && 'sm:flex sm:gap-4 xl:gap-10',
+        viewType === VIEW_TYPES.GRID && 'p-0 sm:p-4',
+      )}
+    >
+      <div
+        className={cn(
+          'relative w-full h-48 sm:h-64 mb-4 rounded-lg overflow-hidden',
+          viewType === VIEW_TYPES.LIST && 'sm:w-1/3 md:max-w-64',
+        )}
+      >
         <div className="absolute inset-0 bg-gray-100 data-[loaded=true]:bg-transparent transition-colors duration-200" />
         <Image
           src={product.image}
@@ -29,18 +45,25 @@ export function ProductItem({ product }: ProductItemProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent animate-pulse data-[loaded=true]:hidden" />
       </div>
 
-      <h2 className="text-lg font-semibold line-clamp-2 mb-1">{product.title}</h2>
-      <p className="text-sm text-gray-500 line-clamp-2 mb-2">{product.description}</p>
+      <div className={cn(viewType === VIEW_TYPES.LIST && 'sm:w-2/3 sm:py-4 md:grow')}>
+        <h2 className="text-lg font-semibold line-clamp-2 mb-1">{product.title}</h2>
+        <p className="text-sm text-gray-500 line-clamp-2 mb-2">{product.description}</p>
 
-      <div className="flex items-center justify-between text-sm mb-2">
-        <span className="text-gray-600">{product.category}</span>
-        <span className="text-yellow-500 font-medium">
-          ⭐ {product.rating.rate.toFixed(1)} ({product.rating.count})
-        </span>
-      </div>
+        <div
+          className={cn(
+            'flex items-center justify-between text-sm mb-2',
+            viewType === VIEW_TYPES.GRID && 'flex-col',
+          )}
+        >
+          <span className="text-gray-600">{product.category}</span>
+          <span className="text-yellow-500 font-medium">
+            ⭐ {product.rating.rate.toFixed(1)} ({product.rating.count})
+          </span>
+        </div>
 
-      <div className="flex items-center justify-between">
-        <span className="text-xl font-bold">${product.price.toFixed(2)}</span>
+        <div className="flex items-center justify-between">
+          <span className="text-xl font-bold">${product.price.toFixed(2)}</span>
+        </div>
       </div>
     </div>
   );
