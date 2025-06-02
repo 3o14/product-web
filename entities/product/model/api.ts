@@ -1,7 +1,15 @@
-import { IProduct } from './types';
+import { IProduct } from '@/entities/product/model/types';
+import { API_URLS } from '@/shared/constants';
 
-export async function fetchProducts(): Promise<IProduct[]> {
-  const res = await fetch('https://fakestoreapi.com/products', {
+const getProductsUrl = (params?: { limit?: number }) => {
+  if (params?.limit) {
+    return `${API_URLS.PRODUCTS}?limit=${params.limit}`;
+  }
+  return API_URLS.PRODUCTS;
+};
+
+export async function fetchProducts(limit: number = 20): Promise<IProduct[]> {
+  const res = await fetch(getProductsUrl({ limit }), {
     cache: 'no-store',
   });
 
