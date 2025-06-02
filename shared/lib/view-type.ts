@@ -2,8 +2,7 @@ import { VIEW_TYPES } from '@/shared/constants';
 
 const VIEW_TYPE_KEY = 'product_view_type';
 const VIEW_TYPE_TIMESTAMP_KEY = 'product_view_type_timestamp';
-const EXPIRE_TIME = 4 * 1000; // 4초
-// const EXPIRE_TIME = 24 * 60 * 60 * 1000; // 24시간 (밀리초)
+const EXPIRE_TIME = 24 * 60 * 60 * 1000; // 24시간
 
 /**
  * 브라우저 환경에서 'list' 또는 'grid' 중 랜덤하게 반환
